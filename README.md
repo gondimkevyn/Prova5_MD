@@ -5,11 +5,11 @@
 ---
 
 ## 👥 Integrantes da Equipe
-* **Cassia** - Matrícula: `XXXXXXXXX`
+* **Cassia Sousa Ataide** - Matrícula: `22450505`
 * **Felipe Alves de Oliveira** - Matrícula: `22554310`
 * **Kevyn do Nascimento Paz Gondim** - Matrícula: `22153920`
-* **Lucas** - Matrícula: `XXXXXXXXX`
-* **Pollyana** - Matrícula: `XXXXXXXXX`
+* **Lucas Henry Garcia Freire** - Matrícula: `22554313`
+* **Pollyanna da Silva Brelaz** - Matrícula: `22350982`
 
 ---
 
