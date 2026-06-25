@@ -1,6 +1,6 @@
 # Problema 5: Divisão Inteira por Subtração Sucessiva
-**Disciplina:** Matemática Discreta e Verificação Formal  
-**Professor:** Edjard Mota – Instituto de Computação / UFAM  
+**Disciplina:** Matemática Discreta  
+**Professor:** Edjard Mota
 
 ---
 
@@ -37,20 +37,20 @@ A implementação inicial fornecida para o exercício apresenta uma falha críti
 
 Para transformar o código em um programa verificado em tempo de execução, aplicamos sistematicamente as diretrizes do roteiro utilizando a primitiva `assert` do Python, dividida em 5 etapas obrigatórias:
 
-1. **# 1. ASSERCAO DE PRE-CONDICAO:** Injetada no início da função para validar se os parâmetros fornecidos pertencem ao domínio aceito pelo algoritmo antes de iniciar qualquer cálculo.
-2. **# 2. ASSERCAO DE INICIALIZACAO (CASO BASE):** Posicionada imediatamente antes da entrada do laço `while`. Avalia se as atribuições iniciais das variáveis de estado satisfazem o Invariante de Loop.
-3. **# 3. ASSERCAO DE MANUTENCAO (PASSO INDUTIVO):** Localizada ao final do corpo do laço, logo após a atualização das variáveis de controle. Comprova que a propriedade do invariante se preserva da iteração $k$ para a iteração $k + 1$.
-4. **# 4. ASSERCAO DE DECREMENTO (PROGRESSO DA TERMINACAO):** Avalia se o valor da Função Variante após o passo é estritamente menor do que o valor capturado no início da iteração, garantindo convergência em direção ao limite inferior.
-5. **# 5. ASSERCAO DE POS-CONDICAO (DEDUCAO FINAL):** Posicionada logo após a saída do bloco do laço e antes do retorno do programa. Valida se o estado final deduzido corresponde perfeitamente à especificação matemática alvo do problema.
+1. **1. ASSERCAO DE PRE-CONDICAO:** Injetada no início da função para validar se os parâmetros fornecidos pertencem ao domínio aceito pelo algoritmo antes de iniciar qualquer cálculo.
+2. **2. ASSERCAO DE INICIALIZACAO (CASO BASE):** Posicionada imediatamente antes da entrada do laço `while`. Avalia se as atribuições iniciais das variáveis de estado satisfazem o Invariante de Loop.
+3. **3. ASSERCAO DE MANUTENCAO (PASSO INDUTIVO):** Localizada ao final do corpo do laço, logo após a atualização das variáveis de controle. Comprova que a propriedade do invariante se preserva da iteração $k$ para a iteração $k + 1$.
+4. **4. ASSERCAO DE DECREMENTO (PROGRESSO DA TERMINACAO):** Avalia se o valor da Função Variante após o passo é estritamente menor do que o valor capturado no início da iteração, garantindo convergência em direção ao limite inferior.
+5. **5. ASSERCAO DE POS-CONDICAO (DEDUCAO FINAL):** Posicionada logo após a saída do bloco do laço e antes do retorno do programa. Valida se o estado final deduzido corresponde perfeitamente à especificação matemática alvo do problema.
 
 ---
 
-## 4. Execução e Análise Dinâmica de Falha (Diretriz 6)
+## 4. Execução e Análise Dinâmica de Falha 
 
 Ao submeter a versão incorreta ao ambiente instrumentado, o ecossistema de verificação reage impedindo o comportamento indefinido:
 
-* **Qual Asserção Estoura:** A asserção responsável por validar o progresso do laço (**# 4. ASSERÇÃO DE DECREMENTO**) dispara imediatamente, levantando uma exceção de interrupção (`AssertionError`).
-* **Razão Aritmética:** Para que a terminação de um loop seja provada sobre o conjunto bem-ordenado dos números naturais ($\mathbb{N}_0$), a função variante $V(\text{state}) = a$ deve decrescer estritamente a cada iteração ($V_{k+1} < V_k$). Como a subtração foi omitida no código bugado, o estado mantém-se fixo ($V_{k+1} = V_k$). Frente a uma guarda que exige que o dividendo seja maior ou igual ao divisor, o progresso métrico colapsa, disparando o alarme da asserção antes que o programa trave a máquina em um loop infinito.
+* **Qual Asserção Estoura:** A asserção responsável por validar o progresso do laço (**4. ASSERÇÃO DE DECREMENTO**) dispara imediatamente, levantando uma exceção de interrupção (`AssertionError`).
+* **Razão Aritmética:** Para que a terminação de um loop seja provada sobre o conjunto bem-ordenado dos números naturais N{0, 1, ...}, a função variante $V(\text{state})$ = a deve decrescer estritamente a cada iteração ($V_{k+1} < V_k$). Como a subtração foi omitida no código bugado, o estado mantém-se fixo ($V_{k+1} = V_k$). Frente a uma guarda que exige que o dividendo seja maior ou igual ao divisor, o progresso métrico colapsa, disparando o alarme da asserção antes que o programa trave a máquina em um loop infinito.
 
 ---
 
